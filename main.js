@@ -86,8 +86,8 @@ loadDatabase = async function loadDatabase() {
 loadDatabase()
 
 
-global.authFile = `${opts._[0] || 'sansbot'}.data.json`
-const { state, saveState } = store.useSingleFileAuthState(global.authFile)
+const authFolder = `${opts._[0] || 'sessions'}`
+const { state, saveCreds } = await useMultiFileAuthState(authFolder)
 
 //const store = makeInMemoryStore({ logger: pino().child({ level: 'silent', stream: 'store' }) })
 
